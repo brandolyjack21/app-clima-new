@@ -12,7 +12,7 @@ function NavBar() {
 
       /*informationWeather({ saludo:'todo bien gracias' })      
 
-        axios.get('https://pixabay.com/api/videos/?key=15851729-f3066f1772a6703716d0145aa&q=cielo+despejado')
+        axios.get('https://pixabay.com/api/videos/?key=&q=cielo+despejado')
              .then( async (res) => {
                const clima = JSON.stringify(res.data)
                await localStorage.setItem('climaCieloDespejado', clima)
