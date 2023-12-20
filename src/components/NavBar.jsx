@@ -1,20 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import informationWeather from "../utils/informationWeather";
 
 function NavBar() {
 
     const [clima , setClima] = useState({})
 
+
+
     useEffect(() => {
+
+      /*informationWeather({ saludo:'todo bien gracias' })      
 
         axios.get('https://pixabay.com/api/videos/?key=15851729-f3066f1772a6703716d0145aa&q=cielo+despejado')
              .then( async (res) => {
-               await console.log(res)
                const clima = JSON.stringify(res.data)
                await localStorage.setItem('climaCieloDespejado', clima)
                await setClima(localStorage.getItem('climaCieloDespejado'))
              })
-             .catch(err => console.log(err))
+             .catch(err => console.log(err))*/
     },[])
   return (
     <header className="header">

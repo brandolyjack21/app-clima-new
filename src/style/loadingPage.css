@@ -9,6 +9,10 @@
     background-color: white;
 }
 
+.container-loading-not-visible{
+    display: none;
+}
+
 .loading-header-container{
     width: 100%;
     height: 60%;

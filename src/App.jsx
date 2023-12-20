@@ -5,11 +5,13 @@ import DetallesDelClima from "./components/DetallesDelClima";
 import BackgroundVideo from "./components/BackgroundVideo";
 import LoadingPage from "./components/LoadingPage";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import informationWeather from "./utils/informationWeather";
+import dotenv from 'dotenv';
+dotenv.config();
 
 function App() {
   const loadedApi = useSelector((state) => state.loadedApi.value);
-  console.log(loadedApi);
 
   const [pages, setPages] = useState([
     <LoadingPage />,
@@ -19,14 +21,10 @@ function App() {
     <BackgroundVideo />,
   ]);
 
-  setTimeout(() => {
-    setPages([
-      <NavBar />,
-      <WidgetTemperatura />,
-      <DetallesDelClima />,
-      <BackgroundVideo />,
-    ]);
-  }, 5000);
+
+  useEffect(() => {
+    informationWeather({ saludo:'ahora si soy yo' })
+  }, [])
 
   return (
     <>

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./../style/loadingPage.css";
 import RadialGradient from "./RadialGradient";
 
 function LoadingPage() {
+
+  const [ isVisible, setIsVisible ] = useState(true)
+
+  setTimeout(() => {
+      setIsVisible(false)
+  },5000)
   return (
-    <div className="container-loading">
+    <div className={ isVisible ? 'container-loading': 'container-loading container-loading-not-visible' }>
       <ul className="loading-header-container">
         <div className="loading-nav">
           <RadialGradient/>
