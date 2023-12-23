@@ -5,14 +5,16 @@ import axios from 'axios'
 function WidgetTemperatura() {
 
   const [ climateData, setClimaData ] = useState({})
-  console.log(process.env.APIKEY);
+  // console.log(process.env.APIKEY);
 
-  const APIKEYCLIMATE = process.env.APIKEYCLIMATE
+  
 
   console.log()
 
   const getData = async () => {
     try {
+
+      const APIKEYCLIMATE = await import.meta.env.VITE_APIKEYCLIMATE
       const ciudad = await getIP()
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${APIKEYCLIMATE}&lang=es`)
            .then(res => 

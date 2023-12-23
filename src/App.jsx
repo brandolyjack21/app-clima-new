@@ -7,8 +7,8 @@ import LoadingPage from "./components/LoadingPage";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import informationWeather from "./utils/informationWeather";
-import dotenv from 'dotenv';
-dotenv.config();
+/*import dotenv from 'dotenv';
+dotenv.config();*/
 
 function App() {
   const loadedApi = useSelector((state) => state.loadedApi.value);

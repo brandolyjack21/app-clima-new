@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const fiveDayForecast = async () => {
-  const APIKEYCLIMATE = process.env.APIKEYCLIMATE;
+  const APIKEYCLIMATE = await import.meta.env.VITE_APIKEYCLIMATE;
   const city = "lima";
 
   try {
