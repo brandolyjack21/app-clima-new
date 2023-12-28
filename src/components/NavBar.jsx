@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import informationWeather from "../utils/informationWeather";
+import { useDispatch } from "react-redux";
+import { setSlideWindow } from "../features/loaded/slideWindow";
 
 function NavBar() {
 
     const [clima , setClima] = useState({})
-
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -25,7 +27,7 @@ function NavBar() {
       <nav className="navbar">
         <ul className="navbar-ul">
           <li className="listItem-navbar listItemPlus">
-            <i class="bx bx-plus"></i>
+            <i class="bx bx-plus" onClick={() => dispatch(setSlideWindow())}></i>
           </li>
           <li className="listItem-navbar listItemNameCity">
             <span>ciudad</span>

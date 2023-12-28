@@ -4,14 +4,22 @@ import WidgetTemperatura from "./components/WidgetTemperatura";
 import DetallesDelClima from "./components/DetallesDelClima";
 import BackgroundVideo from "./components/BackgroundVideo";
 import LoadingPage from "./components/LoadingPage";
+import LocationsList from "./components/LocationsList";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import informationWeather from "./utils/informationWeather";
+import { cambiarValor } from "./features/loaded/cities";
 /*import dotenv from 'dotenv';
 dotenv.config();*/
 
 function App() {
-  const loadedApi = useSelector((state) => state.loadedApi.value);
+
+  // const dispatch = useDispatch()
+  // const loadedApi = useSelector((state) => state.currentCity.value);
+  // console.log(loadedApi, 'este deberia ser');
+  // dispatch(cambiarValor('este es el new value'))
+  // console.log(loadedApi, 'este deberia ser el new value');
+  
 
   const [pages, setPages] = useState([
     <LoadingPage />,
@@ -19,6 +27,7 @@ function App() {
     <WidgetTemperatura />,
     <DetallesDelClima />,
     <BackgroundVideo />,
+    <LocationsList/>
   ]);
 
 

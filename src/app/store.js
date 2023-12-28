@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loadedApi from "./../features/loaded/loadedApiSlice"
+import currentCityReducer from "../features/loaded/cities";
+import  setStatusSlideWindow  from "../features/loaded/slideWindow";
 
 export default configureStore({
     reducer:{
-        loadedApi:loadedApi
+        currentCity : currentCityReducer,
+        statusSlideWindow : setStatusSlideWindow
     }
 })
