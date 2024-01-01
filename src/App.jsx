@@ -8,13 +8,14 @@ import LocationsList from "./components/LocationsList";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import informationWeather from "./utils/informationWeather";
-import { cambiarValor } from "./features/loaded/cities";
+import { cambiarValor, setCurrentCity } from "./features/loaded/cities";
+import getIP from "./utils/getIP";
 /*import dotenv from 'dotenv';
 dotenv.config();*/
 
 function App() {
 
-  // const dispatch = useDispatch()
+   const dispatch = useDispatch()
   // const loadedApi = useSelector((state) => state.currentCity.value);
   // console.log(loadedApi, 'este deberia ser');
   // dispatch(cambiarValor('este es el new value'))
@@ -30,9 +31,16 @@ function App() {
     <LocationsList/>
   ]);
 
+  const updateStateReduxCity = async() => {
+    
+    const ciudad = await getIP()
+    dispatch(setCurrentCity(ciudad))
+  }
+
 
   useEffect(() => {
     informationWeather({ saludo:'ahora si soy yo' })
+    updateStateReduxCity()
   }, [])
 
   return (

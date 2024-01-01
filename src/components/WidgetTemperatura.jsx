@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 function WidgetTemperatura() {
   const [climateData, setClimaData] = useState({});
   // console.log(process.env.APIKEY);
+  
   const ciudad = useSelector((state) => state.currentCity.value);
-
   const getData = async () => {
     try {
       const APIKEYCLIMATE = await import.meta.env.VITE_APIKEYCLIMATE;
+
+      
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${APIKEYCLIMATE}&lang=es`
@@ -27,7 +29,9 @@ function WidgetTemperatura() {
   };
 
   useEffect(() => {
-    getData();
+    if (ciudad) {
+      getData();
+    }
   }, [ciudad]);
 
   useEffect(() => {

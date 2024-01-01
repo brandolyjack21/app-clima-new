@@ -25,7 +25,7 @@ function CityCard({ cityName }) {
         setCityWeather(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log('la ciudad no es correcta.');
         setCityWeather(false)
       });
   }, []);
