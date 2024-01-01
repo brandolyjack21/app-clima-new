@@ -10,7 +10,6 @@ import { setCurrentCity } from "../features/loaded/cities";
 function LocationsList() {
   const [valueChange, setValueChange] = useState("");
   const [citiesToRender, setcitiesToRender] = useState([]);
-  const [ enter, setEnter] = useState(false);
 
   const windowstatus = useSelector((state) => state.statusSlideWindow.value);
   const dispatch = useDispatch();

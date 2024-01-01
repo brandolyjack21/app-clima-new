@@ -70,6 +70,7 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px 5px ;
+    overflow: scroll;
 }
 
 .location-list-container li{

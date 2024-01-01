@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import fiveDayForecastApi from "../utils/getFiveDayForecast";
+import { useSelector } from "react-redux";
 
 function DetallesDelClima() {
   const [fiveDayForecast, setFiveDayForecast] = useState({});
   const [weekday, setWeekday] = useState([]);
+  const ciudad = useSelector( (state) => state.currentCity.value )
 
   const getWeekday = async () => {
     const filterDays = [];
@@ -31,13 +33,13 @@ function DetallesDelClima() {
   };
 
   const updateData = async () => {
-    const forecast = await fiveDayForecastApi();
+    const forecast = await fiveDayForecastApi(ciudad);
     setFiveDayForecast(forecast);
   };
 
   useEffect(() => {
     updateData();
-  }, []);
+  }, [ciudad]);
 
   useEffect(() => {
     getWeekday();

@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const fiveDayForecast = async () => {
+const fiveDayForecast = async (city) => {
   const APIKEYCLIMATE = await import.meta.env.VITE_APIKEYCLIMATE;
-  const city = "lima";
 
   try {
     const response = await axios.get(

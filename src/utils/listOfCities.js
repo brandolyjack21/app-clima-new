@@ -5,10 +5,10 @@ const listOfCities = async (city) => {
 
     const cities = await citiesString ? JSON.parse(citiesString): []
 
-    if (!cities.includes( city )) {
+    if (!cities.includes( city.toLowerCase() )) {
 
         if (!(city.trim().length === 0)) {
-            cities.push(city)
+            cities.push(city.toLowerCase())
             localStorage.setItem('cities' , JSON.stringify(cities))    
         }
         
