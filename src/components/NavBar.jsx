@@ -27,7 +27,7 @@ function NavBar() {
       <nav className="navbar">
         <ul className="navbar-ul">
           <li className="listItem-navbar listItemPlus">
-            <i class="bx bx-plus" onClick={() => dispatch(setSlideWindow())}></i>
+            <i className="bx bx-plus" onClick={() => dispatch(setSlideWindow())}></i>
           </li>
           <li className="listItem-navbar listItemNameCity">
             <span>ciudad</span>
@@ -37,7 +37,7 @@ function NavBar() {
             </div>
           </li>
           <li className="listItem-navbar listItemOptions">
-            <i class='bx bx-dots-vertical-rounded'></i>
+            <i className='bx bx-dots-vertical-rounded'></i>
           </li>
         </ul>
       </nav>

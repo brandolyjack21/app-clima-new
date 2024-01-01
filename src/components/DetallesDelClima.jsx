@@ -47,7 +47,7 @@ function DetallesDelClima() {
       <ul className="container-list-days">
         <li className="list-days">Pronostico de 5 día</li>
         <li className="list-days">
-          Más detalles <i class="bx bxs-right-arrow"></i>
+          Más detalles <i className="bx bxs-right-arrow"></i>
         </li>
       </ul>
       <ul className="container-weather-forecast">

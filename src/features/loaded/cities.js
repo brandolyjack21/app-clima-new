@@ -3,12 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cities = createSlice({
     name:'currentCity',
     initialState:{
-        value: 'este es el gran valor'
+        value: ''
     },
     reducers:{
         setCurrentCity: (state, action) => {
+            
+            //console.log(action.payload, '<=== action.payload');
             state.value = action.payload
-            console.log(action.payload, '<=== action.payload');
         },
         cambiarValor : (state, action) => {
             state.value = action.payload

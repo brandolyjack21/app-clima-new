@@ -3,11 +3,15 @@ const listOfCities = async (city) => {
 
     const citiesString = await localStorage.getItem('cities')
 
-    const cities = citiesString ? JSON.parse(citiesString): []
+    const cities = await citiesString ? JSON.parse(citiesString): []
 
-    if (!cities.some( obj => obj.name )) {
-        cities.push(city)
-        localStorage.setItem('cities' , JSON.stringify(cities))
+    if (!cities.includes( city )) {
+
+        if (!(city.trim().length === 0)) {
+            cities.push(city)
+            localStorage.setItem('cities' , JSON.stringify(cities))    
+        }
+        
     }
 }
 

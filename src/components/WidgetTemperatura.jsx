@@ -8,13 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 function WidgetTemperatura() {
   const [climateData, setClimaData] = useState({});
   // console.log(process.env.APIKEY);
-
-  console.log();
+  const ciudad = useSelector((state) => state.currentCity.value);
 
   const getData = async () => {
     try {
       const APIKEYCLIMATE = await import.meta.env.VITE_APIKEYCLIMATE;
-      const ciudad = await getIP();
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${APIKEYCLIMATE}&lang=es`
@@ -30,16 +28,11 @@ function WidgetTemperatura() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [ciudad]);
 
   useEffect(() => {
     if (climateData.name) {
-      listOfCities({
-        name: climateData?.name,
-        temp_max: Math.round(climateData?.main?.temp_max - 273.15),
-        temp_min: Math.round(climateData?.main?.temp_min - 273.15),
-        temp: Math.round(climateData?.main?.temp - 273.15),
-      });
+      listOfCities(climateData.name);
     }
   }, [climateData]);
 
@@ -54,7 +47,7 @@ function WidgetTemperatura() {
         <li className="data-temperatura-list data-temperatura-list-numbers">
           {climateData?.weather?.[0].description}{" "}
           {Math.round(climateData?.main?.temp_max - 273.15)}º
-          <span style={{ color: "#ffffffc7" }}>/</span>
+          <span style={{ color: "#ffffffc7" }}> / </span>
           {Math.round(climateData?.main?.temp_min - 273.15)}º
         </li>
         <li className="data-temperatura-list data-temperatura-list-ciudad">

@@ -3,39 +3,79 @@ import "./../style/locationsList.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlideWindow } from "../features/loaded/slideWindow";
+import CityCard from "./CityCard";
+import listOfCities from "../utils/listOfCities";
+import { setCurrentCity } from "../features/loaded/cities";
 
 function LocationsList() {
+  const [valueChange, setValueChange] = useState("");
+  const [citiesToRender, setcitiesToRender] = useState([]);
+  const [ enter, setEnter] = useState(false);
 
-  const windowstatus = useSelector(state => state.statusSlideWindow.value)
-  const dispatch = useDispatch()
+  const windowstatus = useSelector((state) => state.statusSlideWindow.value);
+  const dispatch = useDispatch();
+  const cityName = "cusco";
+
+  const handleChangeValue = (e) => {
+    const enteredValue = e.target.value;
+      setValueChange(enteredValue);
+  };
+
+  const bringCities = async () => {
+      const listCities = await localStorage.getItem("cities");
+      if (listCities) {
+        setcitiesToRender(JSON.parse(listCities));
+      }
+  };
 
   useEffect(() => {
-  
-  },[])
+     bringCities();
+  }, []);
   return (
     <>
-      <section className={windowstatus ? 'container-locationsList container-locationsList-hidden': 'container-locationsList'}>
+      <section
+        className={
+          windowstatus
+            ? "container-locationsList container-locationsList-hidden"
+            : "container-locationsList"
+        }
+      >
         <section className="locationsList-container-header">
-          <i class="bx bx-left-arrow-alt" onClick={() => dispatch(setSlideWindow())}></i>
+          <i
+            className="bx bx-left-arrow-alt"
+            onClick={() => dispatch(setSlideWindow())}
+          ></i>
           <span>Administrar ciudades</span>
           <div className="container-input">
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Ingrese una ubicación" />
+            <i
+              className="bx bx-search"
+              onClick={async() => {
+                await listOfCities(valueChange);
+                await bringCities();
+              }}
+            ></i>
+            <input
+              type="text"
+              placeholder="Ingrese una ubicación"
+              value={valueChange}
+              onChange={handleChangeValue}
+              onKeyDown={async (e) => {
+                if(e.key === 'Enter'){
+                  await listOfCities(valueChange);
+                  await bringCities();
+                }
+              }}
+            />
           </div>
         </section>
         <section className="locationsList-container-body">
           <ul className="location-list-container">
-            <li>
-              <div className="container-cityName">
-                <p>
-                  Ciudad <i class="bx bx-map"></i>
-                </p>
-                <span>25° / 20°</span>
-              </div>
-              <div className="container-weather-temperature">
-                21°
-              </div>
-            </li>
+            {
+              citiesToRender.map((city, index) => (
+                <CityCard key={index} cityName={city} />
+              ))
+              
+            }
           </ul>
         </section>
       </section>
