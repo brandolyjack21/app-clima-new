@@ -7,7 +7,7 @@ const getIP = async () => {
 
     const response = await fetch(`https://api.ipdata.co?api-key=${APIKEY_IP}`);
     const responseJson = await response.json();
-    const city = responseJson.city;
+    const city = responseJson?.city;
 
     return city
   } catch (error) {

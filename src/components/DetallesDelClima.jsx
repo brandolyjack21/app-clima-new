@@ -34,7 +34,9 @@ function DetallesDelClima() {
 
   const updateData = async () => {
     const forecast = await fiveDayForecastApi(ciudad);
-    setFiveDayForecast(forecast);
+    if (forecast) {
+      setFiveDayForecast(forecast);  
+    }
   };
 
   useEffect(() => {
