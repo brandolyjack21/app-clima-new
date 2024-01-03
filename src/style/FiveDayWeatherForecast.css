@@ -1,0 +1,33 @@
+.FiveDayWeatherForecast-container{
+    width: 100vw;
+    height: 100dvh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.FiveDayWeatherForecast-header{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 0 10px;
+    width: 100%;
+    height: 100px;
+}
+
+.FiveDayWeatherForecast-header div{
+    font-size: 20px;
+}
+
+.FiveDayWeatherForecast-header-text{
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.FiveDayWeatherForecast-container-main{
+    width: 100%;
+    height: calc( 100% - 100px);
+}
+
+

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSlideWindow } from "../features/loaded/slideWindow";
 import CityCard from "./CityCard";
 import listOfCities from "../utils/listOfCities";
-import { setCurrentCity } from "../features/loaded/cities";
+import { updateCityLengthQuantity } from "../features/loaded/numberOfCitiesOnTheList";
 
 function LocationsList() {
   const [valueChange, setValueChange] = useState("");
@@ -70,9 +70,10 @@ function LocationsList() {
         <section className="locationsList-container-body">
           <ul className="location-list-container">
             {
-              citiesToRender.map((city, index) => (
-                <CityCard key={index} cityName={city} />
-              ))
+              citiesToRender.map((city, index) =>{ 
+                dispatch(updateCityLengthQuantity(index + 1))
+                return <CityCard key={index} cityName={city} />
+              })
               
             }
           </ul>
