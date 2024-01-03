@@ -30,6 +30,10 @@ function LocationsList() {
   useEffect(() => {
      bringCities();
   }, []);
+
+  useEffect(() => {
+    dispatch(updateCityLengthQuantity(citiesToRender.length))
+  },[citiesToRender])
   return (
     <>
       <section
@@ -70,8 +74,7 @@ function LocationsList() {
         <section className="locationsList-container-body">
           <ul className="location-list-container">
             {
-              citiesToRender.map((city, index) =>{ 
-                dispatch(updateCityLengthQuantity(index + 1))
+              citiesToRender.map((city, index) =>{
                 return <CityCard key={index} cityName={city} />
               })
               
