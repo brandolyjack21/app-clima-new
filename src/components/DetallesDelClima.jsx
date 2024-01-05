@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import fiveDayForecastApi from "../utils/getFiveDayForecast";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setfiveDayWeatherForecast } from "../features/loaded/fiveDayWeatherForecast";
+import { setSilderFiveDayWeatherForecast } from "../features/loaded/fiveDayWeatherForecastSlider";
 
 function DetallesDelClima() {
   const [fiveDayForecast, setFiveDayForecast] = useState({});
   const [weekday, setWeekday] = useState([]);
   const ciudad = useSelector( (state) => state.currentCity.value )
+  const dispatch = useDispatch()
 
   const getWeekday = async () => {
     const filterDays = [];
     const days = [];
     const forecastData = await fiveDayForecast;
 
-    forecastData?.list?.map((day) => {
+    forecastData?.list?.map((day, index) => {
       const date = day.dt_txt.split(" ");
 
       if (!filterDays.includes(date[0])) {
@@ -21,6 +24,8 @@ function DetallesDelClima() {
       }
     });
     setWeekday(days);
+   dispatch(setfiveDayWeatherForecast(days))
+   //console.log(days,'daysdaysdaysdays');
   };
 
   const getDayOfWeek = (unconvertedDate) => {
@@ -70,7 +75,7 @@ function DetallesDelClima() {
             )
         )}
       </ul>
-      <button className="button-weather-forecast">Pronóstico de 5 días</button>
+      <button onClick={() => dispatch(setSilderFiveDayWeatherForecast())} className="button-weather-forecast">Pronóstico mas largo</button>
     </section>
   );
 }

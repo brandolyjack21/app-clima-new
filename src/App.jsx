@@ -5,6 +5,7 @@ import DetallesDelClima from "./components/DetallesDelClima";
 import BackgroundVideo from "./components/BackgroundVideo";
 import LoadingPage from "./components/LoadingPage";
 import LocationsList from "./components/LocationsList";
+import FiveDayWeatherForecast from "./components/FiveDayWeatherForecast";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import informationWeather from "./utils/informationWeather";
@@ -28,7 +29,8 @@ function App() {
     <WidgetTemperatura />,
     <DetallesDelClima />,
     <BackgroundVideo />,
-    <LocationsList/>
+    <LocationsList/>,
+    <FiveDayWeatherForecast/>
   ]);
 
   const updateStateReduxCity = async() => {
