@@ -86,7 +86,7 @@ function FiveDayWeatherForecast() {
           <i onClick={() => {dispatch(setSilderFiveDayWeatherForecast())} } className="bx bx-left-arrow-alt"></i>
         </div>
         <div className="FiveDayWeatherForecast-header-text">
-          Pronóstico de 5 días
+          Grafico del Clima.
         </div>
       </header>
       <main className="FiveDayWeatherForecast-main" >

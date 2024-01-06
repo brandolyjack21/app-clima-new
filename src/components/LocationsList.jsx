@@ -6,10 +6,12 @@ import { setSlideWindow } from "../features/loaded/slideWindow";
 import CityCard from "./CityCard";
 import listOfCities from "../utils/listOfCities";
 import { updateCityLengthQuantity } from "../features/loaded/numberOfCitiesOnTheList";
+import clearSearchHistory from "../utils/clearSearchHistory";
 
 function LocationsList() {
   const [valueChange, setValueChange] = useState("");
   const [citiesToRender, setcitiesToRender] = useState([]);
+  const [ clearCityHistoryBanner, setclearCityHistoryBanner ] = useState(false)
 
   const windowstatus = useSelector((state) => state.statusSlideWindow.value);
   const dispatch = useDispatch();
@@ -17,23 +19,23 @@ function LocationsList() {
 
   const handleChangeValue = (e) => {
     const enteredValue = e.target.value;
-      setValueChange(enteredValue);
+    setValueChange(enteredValue);
   };
 
   const bringCities = async () => {
-      const listCities = await localStorage.getItem("cities");
-      if (listCities) {
-        setcitiesToRender(JSON.parse(listCities));
-      }
+    const listCities = await localStorage.getItem("cities");
+    if (listCities) {
+      setcitiesToRender(JSON.parse(listCities));
+    }
   };
 
   useEffect(() => {
-     bringCities();
+    bringCities();
   }, []);
 
   useEffect(() => {
-    dispatch(updateCityLengthQuantity(citiesToRender.length))
-  },[citiesToRender])
+    dispatch(updateCityLengthQuantity(citiesToRender.length));
+  }, [citiesToRender]);
   return (
     <>
       <section
@@ -44,15 +46,31 @@ function LocationsList() {
         }
       >
         <section className="locationsList-container-header">
-          <i
-            className="bx bx-left-arrow-alt"
-            onClick={() => dispatch(setSlideWindow())}
-          ></i>
+          <div className="container-btn-back-and-delete">
+            <i
+              className="bx bx-left-arrow-alt"
+              onClick={() => dispatch(setSlideWindow())}
+            ></i>
+            <div onClick={() => setclearCityHistoryBanner(!clearCityHistoryBanner)} className="clearCityHistory">Delete</div>
+            <div className={ clearCityHistoryBanner? "clearCityHistory-banner": "clearCityHistory-banner-hidden" }>
+              <div>
+              <p>
+                Desea eliminar el historial de sus busquedas? Recuerde que puede
+                volver a ingresar las ciudades que necesite.
+              </p>
+              <button onClick={() => {
+                setclearCityHistoryBanner(!clearCityHistoryBanner)
+                clearSearchHistory()
+                setcitiesToRender([])
+              }}>eliminar ciudades</button>
+              </div>
+            </div>
+          </div>
           <span>Administrar ciudades</span>
           <div className="container-input">
             <i
               className="bx bx-search"
-              onClick={async() => {
+              onClick={async () => {
                 await listOfCities(valueChange);
                 await bringCities();
               }}
@@ -63,7 +81,7 @@ function LocationsList() {
               value={valueChange}
               onChange={handleChangeValue}
               onKeyDown={async (e) => {
-                if(e.key === 'Enter'){
+                if (e.key === "Enter") {
                   await listOfCities(valueChange);
                   await bringCities();
                 }
@@ -73,12 +91,9 @@ function LocationsList() {
         </section>
         <section className="locationsList-container-body">
           <ul className="location-list-container">
-            {
-              citiesToRender.map((city, index) =>{
-                return <CityCard key={index} cityName={city} />
-              })
-              
-            }
+            {citiesToRender.map((city, index) => {
+              return <CityCard key={index} cityName={city} />;
+            })}
           </ul>
         </section>
       </section>
