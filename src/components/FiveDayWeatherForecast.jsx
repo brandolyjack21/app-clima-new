@@ -50,7 +50,7 @@ function FiveDayWeatherForecast() {
   }
 
   const extractTheTemperature = () => {
-    const temperature = [{data:[]}];
+    const temperature = [{data:[], color:'#50aaffe5'}];
     dataFiveDayWeatherForecast?.map((day, index) => {
       temperature[0].data.push(Math.round(day?.main?.temp - 273.15));
     });

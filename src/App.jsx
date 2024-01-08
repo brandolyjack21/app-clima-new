@@ -15,13 +15,11 @@ import getIP from "./utils/getIP";
 dotenv.config();*/
 
 function App() {
-
-   const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const loadedApi = useSelector((state) => state.currentCity.value);
   // console.log(loadedApi, 'este deberia ser');
   // dispatch(cambiarValor('este es el new value'))
   // console.log(loadedApi, 'este deberia ser el new value');
-  
 
   const [pages, setPages] = useState([
     <LoadingPage />,
@@ -29,21 +27,19 @@ function App() {
     <WidgetTemperatura />,
     <DetallesDelClima />,
     <BackgroundVideo />,
-    <LocationsList/>,
-    <FiveDayWeatherForecast/>
+    <LocationsList />,
+    <FiveDayWeatherForecast />,
   ]);
 
-  const updateStateReduxCity = async() => {
-    
-    const ciudad = await getIP()
-    dispatch(setCurrentCity(ciudad))
-  }
-
+  const updateStateReduxCity = async () => {
+    const ciudad = await getIP();
+    dispatch(setCurrentCity(ciudad));
+  };
 
   useEffect(() => {
-    informationWeather({ saludo:'ahora si soy yo' })
-    updateStateReduxCity()
-  }, [])
+    informationWeather({ saludo: "ahora si soy yo" });
+    updateStateReduxCity();
+  }, []);
 
   return (
     <>
@@ -56,9 +52,19 @@ function App() {
           loop
         ></video>
       </div>
-      {pages.map((page, index) => (
-        <li key={index}>{page}</li>
-      ))}
+      <div className="all-components-for-aplication">
+        <div className="components-container-for-aplication">
+          <LoadingPage />
+          <NavBar />
+          <WidgetTemperatura />
+          <DetallesDelClima />
+          <BackgroundVideo />
+        </div>
+        <div className="componentents-container-slider-data">
+          <LocationsList />
+          <FiveDayWeatherForecast />
+        </div>
+      </div>
     </>
   );
 }

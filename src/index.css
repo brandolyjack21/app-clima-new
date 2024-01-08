@@ -1,216 +1,491 @@
-
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+@media (max-width:425px) {
 
-html{
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  ::-webkit-scrollbar{
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background-color: rgba(208, 211, 226, 0.699);
+    border-radius: 10px;
+    width: 2px;
+    height: 10px;
+    border: solid 5px rgba(255, 255, 255, 0.034) ;
+  }
+  
+  ::-webkit-scrollbar-corner{
+    background-color: transparent;
+  }
+
+
+  html {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #root {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  /* contenedor de componentes */
+
+  .components-container-for-aplication {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* navbar */
+
+  .header {
+    width: 100vw;
+    height: 56px;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 11;
+  }
+
+  .navbar ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .listItem-navbar {
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+  }
+
+  .listItemNameCity {
+    font-size: 18;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: max-content;
+    margin: 0 auto;
+  }
+
+  .pages-navbar {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    width: max-content;
+  }
+
+  .pages-navbar div {
+    min-width: 4px;
+    min-height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.582);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+  }
+
+  /* widget temperatura */
+
+  .widgetTemperatura {
+    width: 100vw;
+    max-width: 425px;
+    height: calc(60vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+  }
+
+  .widgetTemperatura-container-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .data-temperatura-list {
+    color: #ffffff;
+    font-family: 'Afacad', sans-serif;
+    font-weight: 600;
+  }
+
+  .data-temperatura-list-number {
+    font-size: 90px;
+    position: relative;
+  }
+
+  .data-temperatura-list-number:after {
+    content: 'ºC';
+    position: absolute;
+    font-size: 50px;
+    top: 15px;
+  }
+
+  .data-temperatura-list-numbers {
+    font-size: 20px;
+  }
+
+  .data-temperatura-list-ciudad {
+    width: 60px;
+    background-color: rgba(255, 255, 255, 0.411);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  /* detalles del clima componente */
+
+  .container-clima-data {
+    width: 90%;
+    height: 30vh;
+    border-radius: 15px;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+    background-color: #00000025;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 11;
+  }
+
+  .container-list-days {
+    width: 100%;
+    height: 28px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+  }
+
+  .container-weather-forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .weather-forecast {
+    height: 3.5vh;
+    display: flex;
+    justify-content: space-between;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    padding: 0 10px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .button-weather-forecast {
+    width: 90%;
+    height: max-content;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+    background-color: #7aa9df;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Afacad', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .7px;
+  }
+
+  /* background video */
+
+  .video-background {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #video-background {
+    height: 100vh;
+  }
 }
 
-body{
-  position: relative;
-  overflow: hidden;
+
+@media (min-width:426px) {
+  
+  
+  ::-webkit-scrollbar{
+  background-color: transparent;
 }
 
-#root{
-  position: relative;
-  z-index: 10;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-li{
-  list-style: none;
-}
-
-/* navbar */
-
-.header{
-  width: 100vw;
-  height: 56px;
-}
-
-.navbar{
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 11;
-}
-
-.navbar ul {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  padding: 0 20px;
-}
-
-.listItem-navbar{
-  font-size: 20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 600;
-  color: rgb(255, 255, 255);
-}
-
-.listItemNameCity{
-  font-size: 18;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-  height: max-content;
-  margin: 0 auto;
-}
-
-.pages-navbar{
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  width: max-content;
-}
-
-.pages-navbar div{
-  min-width: 4px;
-  min-height: 4px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.582);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 400;
-}
-
-/* widget temperatura */
-
-.widgetTemperatura{
-  width: 100vw;
-  max-width: 425px;
-  height: calc(60vh - 56px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 11;
-}
-
-.widgetTemperatura-container-data{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.data-temperatura-list{
-  color: #ffffff;
-  font-family: 'Afacad', sans-serif;
-  font-weight: 600;
-}
-
-.data-temperatura-list-number{
-  font-size: 90px;
-  position: relative;
-}
-
-.data-temperatura-list-number:after{
-  content: 'ºC';
-  position: absolute;
-  font-size: 50px;
-  top: 15px;
-}
-
-.data-temperatura-list-numbers{
-  font-size: 20px;
-}
-
-.data-temperatura-list-ciudad{
-  width: 60px;
-  background-color: rgba(255, 255, 255, 0.411);
-  display: flex;
-  justify-content: center;
+::-webkit-scrollbar-thumb{
+  background-color: rgba(63, 65, 77, 0.699);
   border-radius: 10px;
+  width: 2px;
+  height: 10px;
+  border: solid 5px rgba(255, 255, 255, 0) ;
 }
 
-/* detalles del clima componente */
-
-.container-clima-data{
-  width: 90%;
-  height: 30vh;
-  border-radius: 15px;
-  margin: 0 auto;
-  backdrop-filter: blur(5px);
-  background-color: #00000025;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-  z-index: 11;
+::-webkit-scrollbar-corner{
+  background-color: transparent;
 }
 
-.container-list-days{
-  width: 100%;
-  height: 28px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 10px;
-  margin-top: 10px;
-  font-size: 14px;
-  color: white;
+  #root {
+    display: flex;
+    width: 100vw;
+    height: 100dvh;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 150vw;
+    height: 150dvh;
+  }
+
+  #video-background{
+    height: 100%;
+  }
+
+  /* contenedor de la aplicacion */
+
+  .all-components-for-aplication{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .components-container-for-aplication{
+    width: 320px;
+    height: 100dvh;
+  }
+
+  .componentents-container-slider-data{
+    width: 393px;
+    height: 100dvh;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header {
+    width: 100%;
+    height: 56px;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 11;
+  }
+
+  .navbar ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .listItem-navbar {
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+  }
+
+  .listItemNameCity {
+    font-size: 18;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: max-content;
+    margin: 0 auto;
+  }
+
+  .pages-navbar {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    width: max-content;
+  }
+
+  .pages-navbar div {
+    min-width: 4px;
+    min-height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.582);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+  }
+
+  /* widget temperatura  */
+
+  .widgetTemperatura {
+    width: 100%;
+    max-width: 425px;
+    height: calc(60vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+  }
+
+  .widgetTemperatura-container-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .data-temperatura-list {
+    color: #ffffff;
+    font-family: 'Afacad', sans-serif;
+    font-weight: 600;
+  }
+
+  .data-temperatura-list-number {
+    font-size: 90px;
+    position: relative;
+  }
+
+  .data-temperatura-list-number:after {
+    content: 'ºC';
+    position: absolute;
+    font-size: 50px;
+    top: 15px;
+  }
+
+  .data-temperatura-list-numbers {
+    font-size: 20px;
+  }
+
+  .data-temperatura-list-ciudad {
+    width: 60px;
+    background-color: rgba(255, 255, 255, 0.411);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  /* detalles del clima componente */
+
+  .container-clima-data {
+    width: 90%;
+    height: 30vh;
+    border-radius: 15px;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+    background-color: #00000025;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 11;
+  }
+
+  .container-list-days {
+    width: 100%;
+    height: 28px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+  }
+
+  .container-weather-forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .weather-forecast {
+    height: 3.5vh;
+    display: flex;
+    justify-content: space-between;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    padding: 0 10px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .button-weather-forecast {
+    width: 90%;
+    height: max-content;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+    background-color: #7aa9df;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Afacad', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .7px;
+  }
 }
 
-.container-weather-forecast{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+@media (min-width:768px) {
+  .all-components-for-aplication{
+    max-width: 768px;
+    max-height: 866px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-around;
+  }
 }
-
-.weather-forecast{
-  height: 3.5vh;
-  display: flex;
-  justify-content: space-between;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  padding: 0 10px;
-  color: white;
-  font-weight: 600;
-}
-
-.button-weather-forecast{
-  width: 90%;
-  height: max-content;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  margin: 15px auto;
-  background-color: #7aa9df;
-  border: none;
-  border-radius: 20px;
-  color: white;
-  font-family: 'Afacad', sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: .7px;
-}
-
-/* background video */
-
-.video-background{
-  position: absolute;
-  z-index: 9;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#video-background{
-  height: 100vh;
-}
-
-

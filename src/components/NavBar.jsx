@@ -14,7 +14,7 @@ function NavBar() {
 
   const lengthOfCitiesComponent = () => {
 
-    if (lengthOfCities < 6) {
+    if (lengthOfCities < 7) {
       return Array.from({ length: lengthOfCities }, (_, index) => (
         <div key={index}></div>))
     }else{

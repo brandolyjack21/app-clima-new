@@ -8,7 +8,7 @@ const listOfCities = async (city) => {
     if (!cities.includes( city.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") )) {
 
         if (!(city.trim().length === 0)) {
-            cities.push(city.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
+            cities.unshift(city.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
             localStorage.setItem('cities' , JSON.stringify(cities))    
         }
         

@@ -1,46 +1,92 @@
-.FiveDayWeatherForecast-container{
-    width: 100vw;
-    height: 100dvh;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    padding: 10px;
-    top: 0;
-    left: 0;
-    z-index: 110;
-    transition:  all .5s ease-in-out;
+@media (max-width:426px) {
+    .FiveDayWeatherForecast-container{
+        width: 100vw;
+        height: 100dvh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        padding: 10px;
+        top: 0;
+        left: 0;
+        z-index: 110;
+        transition:  all .5s ease-in-out;
+    }
+    
+    .FiveDayWeatherForecast-container-disguise{
+        left: 100vw;
+    }
+    
+    .FiveDayWeatherForecast-header{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 0 10px;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .FiveDayWeatherForecast-header div{
+        font-size: 20px;
+    }
+    
+    .FiveDayWeatherForecast-header-text{
+        font-size: 20px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    }
+    
+    .FiveDayWeatherForecast-main{
+        width: 100%;
+        height: calc( 100% - 100px);
+        overflow-x: scroll;
+        display: flex;
+        justify-content: center;
+    }
 }
 
-.FiveDayWeatherForecast-container-disguise{
-    left: 100vw;
-}
+@media (min-width:426px) {
 
-.FiveDayWeatherForecast-header{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 0 10px;
-    width: 100%;
-    height: 100px;
-}
-
-.FiveDayWeatherForecast-header div{
-    font-size: 20px;
-}
-
-.FiveDayWeatherForecast-header-text{
-    font-size: 20px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-}
-
-.FiveDayWeatherForecast-main{
-    width: 100%;
-    height: calc( 100% - 100px);
-    overflow-x: scroll;
-    display: flex;
-    justify-content: center;
+    .FiveDayWeatherForecast-container{
+        width: 100%;
+        height: 50%;
+        background-color: #00000033;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin-bottom: 10px;
+        backdrop-filter: blur(5px);
+        z-index: 110;
+        border-radius: 15px;
+        transition:  all .5s ease-in-out;
+    }
+    
+    .FiveDayWeatherForecast-header{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 0 10px;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .FiveDayWeatherForecast-header div{
+        font-size: 20px;
+    }
+    
+    .FiveDayWeatherForecast-header-text{
+        font-size: 20px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: white;
+    }
+    
+    .FiveDayWeatherForecast-main{
+        width: 100%;
+        height: calc( 100% - 100px);
+        overflow-x: scroll;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./../style/locationsList.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +9,10 @@ import { updateCityLengthQuantity } from "../features/loaded/numberOfCitiesOnThe
 import clearSearchHistory from "../utils/clearSearchHistory";
 
 function LocationsList() {
+  const scrollTop = useRef(null);
   const [valueChange, setValueChange] = useState("");
   const [citiesToRender, setcitiesToRender] = useState([]);
-  const [ clearCityHistoryBanner, setclearCityHistoryBanner ] = useState(false)
+  const [clearCityHistoryBanner, setclearCityHistoryBanner] = useState(false);
 
   const windowstatus = useSelector((state) => state.statusSlideWindow.value);
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function LocationsList() {
 
   useEffect(() => {
     dispatch(updateCityLengthQuantity(citiesToRender.length));
+    scrollTop.current.scrollTo(0, 0);
   }, [citiesToRender]);
   return (
     <>
@@ -45,25 +47,40 @@ function LocationsList() {
             : "container-locationsList"
         }
       >
+        
+        <div
+              className={
+                clearCityHistoryBanner
+                  ? "clearCityHistory-banner"
+                  : "clearCityHistory-banner-hidden"
+              }
+            >
+              <div>
+                <p>
+                ¿Desea eliminar el historial de sus búsquedas? Recuerde que siempre puede volver a ingresar las ciudades que necesite.
+                </p>
+                <button
+                  onClick={() => {
+                    setclearCityHistoryBanner(!clearCityHistoryBanner);
+                    clearSearchHistory();
+                    setcitiesToRender([]);
+                  }}
+                >
+                  eliminar ciudades
+                </button>
+              </div>
+            </div>
         <section className="locationsList-container-header">
           <div className="container-btn-back-and-delete">
             <i
               className="bx bx-left-arrow-alt"
               onClick={() => dispatch(setSlideWindow())}
             ></i>
-            <div onClick={() => setclearCityHistoryBanner(!clearCityHistoryBanner)} className="clearCityHistory">Delete</div>
-            <div className={ clearCityHistoryBanner? "clearCityHistory-banner": "clearCityHistory-banner-hidden" }>
-              <div>
-              <p>
-                Desea eliminar el historial de sus busquedas? Recuerde que puede
-                volver a ingresar las ciudades que necesite.
-              </p>
-              <button onClick={() => {
-                setclearCityHistoryBanner(!clearCityHistoryBanner)
-                clearSearchHistory()
-                setcitiesToRender([])
-              }}>eliminar ciudades</button>
-              </div>
+            <div
+              onClick={() => setclearCityHistoryBanner(!clearCityHistoryBanner)}
+              className="clearCityHistory"
+            >
+              Delete
             </div>
           </div>
           <span>Administrar ciudades</span>
@@ -90,9 +107,9 @@ function LocationsList() {
           </div>
         </section>
         <section className="locationsList-container-body">
-          <ul className="location-list-container">
+          <ul ref={scrollTop} className="location-list-container">
             {citiesToRender.map((city, index) => {
-              return <CityCard key={index} cityName={city} />;
+              return <CityCard key={city} cityName={city} />;
             })}
           </ul>
         </section>

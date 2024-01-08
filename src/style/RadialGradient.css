@@ -1,20 +1,21 @@
-.radial-gradient{
-    width: 1000px;
-    height: 1000px;
-    position: absolute;
-    top: -350px;
-    left: -120px;
-    background: rgb(145,145,145);
-background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(0,0,0,1) 100%);
-    animation: rotateRadialGradientBackground infinite 2s ease-in-out;
-}
-
-@keyframes rotateRadialGradientBackground {
-    0%{
-        transform: rotate(0deg);
+@media (max-width:426px) {
+    .radial-gradient{
+        width: 1000px;
+        height: 1000px;
+        position: absolute;
+        top: -350px;
+        left: -120px;
+        background: rgb(145,145,145);
+    background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(0,0,0,1) 100%);
+        animation: rotateRadialGradientBackground infinite 2s ease-in-out;
     }
-    100%{
-        transform: rotate(360deg);
+    
+    @keyframes rotateRadialGradientBackground {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
     }
 }
-
