@@ -234,6 +234,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background-color: #7aa9df;
   }
 
   #video-background {
@@ -282,10 +283,12 @@
     z-index: 2;
     width: 150vw;
     height: 150dvh;
+    background-color: #7aa9df;
   }
 
   #video-background{
     height: 100%;
+    background-color: #7aa9df;
   }
 
   /* contenedor de la aplicacion */

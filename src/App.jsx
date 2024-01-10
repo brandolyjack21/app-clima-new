@@ -44,13 +44,13 @@ function App() {
   return (
     <>
       <div className="video-background">
-        <video
+        {/* <video
           id="video-background"
           src="https://cdn.pixabay.com/vimeo/408654212/birds-35881.mp4?width=640&hash=2a130df3b6157f7ff0c8202b4ca86f4cdcb03c55"
           muted
           autoPlay
           loop
-        ></video>
+        ></video> */}
       </div>
       <div className="all-components-for-aplication">
         <div className="components-container-for-aplication">
